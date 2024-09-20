@@ -1,4 +1,4 @@
-print('\nExample of Inheritance:')
+print('\nExample of Inheritance and Polymorphism')
 class Animal:
   def __init__(self, name) -> None:
     self.name = name
@@ -21,13 +21,12 @@ class Cat(Animal):
 dog = Dog(name='Cat')
 cat = Cat(name='Dog')
 
-print('\nExample of Polymorphism:')
 animals = [dog, cat]
 
 for animal in animals:
   print(f'The animal {animal.name} speaks {animal.speak()}')
 
-print('\nExample of Encapsulation.')
+print('\nExample of Encapsulation')
 class BankAccount:
   def __init__(self, balance) -> None:
     self.__balance = balance # private property
@@ -51,3 +50,30 @@ account.deposit(-500)
 print(f'Balance account: {account.get_balance()}')
 account.withdraw(200)
 print(f'Balance account: {account.get_balance()}')
+
+
+print('\nExample of Abstraction')
+from abc import ABC, abstractmethod
+
+class Vehicle(ABC):
+  @abstractmethod
+  def start(self):
+    pass
+
+  @abstractmethod
+  def stop(self):
+    pass
+
+class Car(Vehicle):
+  def __init__(self) -> None:
+    pass
+
+  def start(self):
+    return 'Car started using key'
+  
+  def stop(self):
+    return 'Car stopped'
+
+volvo = Car()
+print(volvo.start())
+print(volvo.stop())
