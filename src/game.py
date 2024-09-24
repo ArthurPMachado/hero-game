@@ -42,8 +42,22 @@ class Enemy(Character):
   def show_details(self):
     return f'{super().show_details()}\nType: {self.get_type()}\n'
 
-hero = Hero('Hero', 100, 5, 'Flash Strike')
-print(hero.show_details())
+class Game:
+  """Class to control the game flow."""
 
-enemy = Enemy('Bat', 50, 3, 'flyer')
-print(enemy.show_details())
+  def __init__(self) -> None:
+    self.hero = Hero('Hero', 100, 5, 'Flash Strike')
+    self.enemy = Enemy('Bat', 50, 3, 'Flying')
+  
+  def start_battle(self):
+    print('Starting the battle!')
+    while self.hero.get_health() > 0 and self.enemy.get_health() > 0:
+      print('\n Characters Details:')
+      print(self.hero.show_details())
+      print(self.enemy.show_details())
+
+      input('Press enter to attack...')
+      choose = input('Choose (1 - Normal Attack, 2 - Special Attack): ')
+
+game = Game()
+game.start_battle()
